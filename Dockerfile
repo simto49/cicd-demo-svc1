@@ -7,7 +7,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV GRADLE_USER_HOME /workspace/.gradle
 COPY . /demo-svc1
 WORKDIR /demo-svc1
-RUN ./gradlew build
+RUN ./gradlew build -x test
 
 FROM alpine:3.11
 MAINTAINER junyoung.oh@nhn.com
