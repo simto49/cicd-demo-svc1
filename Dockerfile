@@ -1,9 +1,9 @@
-FROM ubuntu:bionic AS builder
+FROM alpine:3.11 AS builder
 MAINTAINER junyoung.oh@nhn.com
-RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
- && rm -rf /var/lib/apt/lists/*
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+RUN apk add --update \
+    openjdk11 \
+    && rm -rf /var/cache/apk
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk
 ENV GRADLE_USER_HOME /workspace/.gradle
 COPY . /demo-svc1
 WORKDIR /demo-svc1
